@@ -2,6 +2,8 @@ package net.userdatabase.springboot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,13 +34,15 @@ public class User {
 	private String dateOfBirth;
 	
 	@Column(name = "gender")
-	private String gender;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 	
 	@Column(name = "mobilePhone")
 	private String mobilePhone;
 	
 	@Column(name = "userType")
-	private String userType;	
+	@Enumerated(EnumType.STRING)
+	private UserType userType;	
 	
 	
 	public int getAnnualSalary() {
@@ -53,23 +57,25 @@ public class User {
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+	
 	public String getMobilePhone() {
 		return mobilePhone;
 	}
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
-	public String getUserType() {
+	
+	public UserType getUserType() {
 		return userType;
 	}
-	public void setUserType(String userType) {
+	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 	public long getId() {
 		return id;

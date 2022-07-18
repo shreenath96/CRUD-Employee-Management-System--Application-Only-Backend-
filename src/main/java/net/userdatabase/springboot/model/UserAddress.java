@@ -5,6 +5,8 @@ package net.userdatabase.springboot.model;
 	import javax.persistence.CascadeType;
 import javax.persistence.Column;
 	import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 	import javax.persistence.GenerationType;
@@ -36,7 +38,8 @@ import javax.persistence.Table;
 		
 
 		@Column(name = "addrtype")
-		private String addrtype;
+		@Enumerated(EnumType.STRING)
+		private AddressType addrtype;
 		
 		@Column(name = "city")
 		private String city;
@@ -82,11 +85,11 @@ import javax.persistence.Table;
 			this.addrname = addrname;
 		}
 
-		public String getAddrtype() {
+		public AddressType getAddrtype() {
 			return addrtype;
 		}
 
-		public void setAddrtype(String addrtype) {
+		public void setAddrtype(AddressType addrtype) {
 			this.addrtype = addrtype;
 		}
 
@@ -113,7 +116,6 @@ import javax.persistence.Table;
 		public void setLocationCode(String locationCode) {
 			this.locationCode = locationCode;
 		}
-
 		public String getPostalCode() {
 			return postalCode;
 		}
@@ -130,6 +132,14 @@ import javax.persistence.Table;
 			this.stateCode = stateCode;
 		}
 
+		public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
 		@Column(name = "country")
 		private String country;
 		
@@ -143,7 +153,6 @@ import javax.persistence.Table;
 		private String stateCode;
 		
 		@ManyToOne(targetEntity = User.class)
-		@JoinColumn(name = "user_id")
 		private User user;
 
 	
